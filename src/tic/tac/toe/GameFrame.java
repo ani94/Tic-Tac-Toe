@@ -15,9 +15,13 @@ public class GameFrame extends javax.swing.JFrame {
     /**
      * Creates new form GameFrame
      */
-    String playerSymbol;
-    String compSymbol;
-    Boolean gameState; 
+    protected String playerSymbol;
+    protected String compSymbol;
+    protected Boolean gameState; 
+    protected int cols;
+    protected int rows;
+    protected int[][] cells;
+    
     public GameFrame() {
         initComponents();
         gameState = false;
@@ -279,6 +283,19 @@ public class GameFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void freezeButtons()
+    {
+        jButton1.setEnabled(false);
+        jButton2.setEnabled(false);
+        jButton3.setEnabled(false);
+        jButton4.setEnabled(false);
+        jButton5.setEnabled(false);
+        jButton6.setEnabled(false);
+        jButton7.setEnabled(false);
+        jButton8.setEnabled(false);
+        jButton9.setEnabled(false);
+    }
+    
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -290,6 +307,7 @@ public class GameFrame extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         jButton1.setText(this.playerSymbol);
+        freezeButtons();
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
@@ -304,41 +322,49 @@ public class GameFrame extends javax.swing.JFrame {
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
         jButton3.setText(this.playerSymbol);
+        freezeButtons();
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
         jButton2.setText(this.playerSymbol);
+        freezeButtons();
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         // TODO add your handling code here:
         jButton5.setText(this.playerSymbol);
+        freezeButtons();
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
         jButton4.setText(this.playerSymbol);
+        freezeButtons();
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         // TODO add your handling code here:
         jButton6.setText(this.playerSymbol);
+        freezeButtons();
     }//GEN-LAST:event_jButton6MouseClicked
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
         // TODO add your handling code here:
         jButton7.setText(this.playerSymbol);
+        freezeButtons();
     }//GEN-LAST:event_jButton7MouseClicked
 
     private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
         // TODO add your handling code here:
         jButton9.setText(this.playerSymbol);
+        freezeButtons();
     }//GEN-LAST:event_jButton9MouseClicked
 
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
         // TODO add your handling code here:
         jButton8.setText(this.playerSymbol);
+        freezeButtons();
     }//GEN-LAST:event_jButton8MouseClicked
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
@@ -352,16 +378,8 @@ public class GameFrame extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
-        jButton1.setEnabled(false);
-        jButton2.setEnabled(false);
-        jButton3.setEnabled(false);
-        jButton4.setEnabled(false);
-        jButton5.setEnabled(false);
-        jButton6.setEnabled(false);
-        jButton7.setEnabled(false);
-        jButton8.setEnabled(false);
-        jButton9.setEnabled(false);
-        
+        freezeButtons();
+        int [][] board = gameState();
     }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
@@ -422,4 +440,22 @@ public class GameFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    private int[][] gameState() {
+        
+        int [][] board = null;
+        board[0][0] = (jButton1.getText()=="X"?1:0);
+        board[0][1] = (jButton3.getText()=="X"?1:0);
+        board[0][2] = (jButton2.getText()=="X"?1:0);
+        board[1][0] = (jButton5.getText()=="X"?1:0);
+        board[1][1] = (jButton4.getText()=="X"?1:0);
+        board[0][1] = (jButton6.getText()=="X"?1:0);
+        board[2][0] = (jButton7.getText()=="X"?1:0);
+        board[2][1] = (jButton9.getText()=="X"?1:0);
+        board[2][2] = (jButton8.getText()=="X"?1:0);
+        
+        return board;
+        
+      
+    }
 }
